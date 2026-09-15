@@ -1,0 +1,6 @@
+[submodule "hier-hmm"]
+	path = hier-hmm
+	url = https://github.com/mchikina/hier-hmm.git
+[submodule "fiberstore"]
+	path = fiberstore
+	url = https://github.com/mchikina/fiberstore.git

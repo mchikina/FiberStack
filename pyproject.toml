@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fiberstack"
+version = "0.1.0"
+description = "Umbrella for mature single-molecule Fiber-seq tools and the glue between them"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Maria Chikina"}]
+dependencies = [
+  "numpy>=1.21",
+  "fiberstore",
+  "hier-hmm",
+]
+
+[project.optional-dependencies]
+build = ["fiberstore[build]"]
+test = ["pytest>=7", "pysam>=0.21"]
+
+[tool.setuptools]
+packages = ["fiberstack"]
+
+[tool.uv.workspace]
+members = ["fiberstore", "hier-hmm"]
+
+[tool.uv.sources]
+fiberstore = { workspace = true }
+hier-hmm = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
