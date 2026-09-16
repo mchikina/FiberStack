@@ -12,8 +12,8 @@ from fiberstack.to_hmm import save_window, window_matrix  # noqa: E402
 def store(tmp_path_factory):
     d = tmp_path_factory.mktemp("s")
     truth, ref = synthetic_bam(d / "syn.bam", n_reads=300, seed=3)
-    build(str(d / "syn.bam"), str(d / "fs"), workers=2, chunk=10_000, log=None)
-    return FiberStore(str(d / "fs")), truth, ref
+    build(str(d / "syn.bam"), str(d / "fs.parquet"), workers=2, chunk=10_000, log=None)
+    return FiberStore(str(d / "fs.parquet")), truth, ref
 
 
 def test_window_matrix_matches_store(store):
