@@ -27,6 +27,10 @@ uv sync --extra build --extra test      # one .venv with every tool installed ed
 uv run pytest fiberstore hier-hmm tests
 ```
 
+Run the tests through `uv run pytest` or `.venv/bin/pytest`, not `python -m pytest`: the
+latter puts this directory first on `sys.path`, where the `fiberstore/` submodule checkout
+shadows the installed `fiberstore` package and every import fails.
+
 An analysis project installs what it needs from here (`uv pip install -e ../FiberStack/fiberstore`)
 and imports it; it never copies the code.
 

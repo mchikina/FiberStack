@@ -43,7 +43,8 @@ def window_matrix(fs, chrom, s, e, seq=None, min_frac=0.88, center=None, columns
     out = {"m6a": m6a, "coverage": cov, "positions": np.arange(s, e),
            "center": np.int64((s + e) // 2 if center is None else center),
            "qname": np.array([fs.qname(m, z) for m, z in zip(t["movie"], t["zmw"])]),
-           "start": t["start"], "end": t["end"], "reverse": t["reverse"], "row": t["row"]}
+           "start": t["start"], "end": t["end"], "reverse": t["reverse"], "row": t["row"],
+           "n_m6a": np.array([len(p) for p in t["m6a"]])}   # whole-read m6A count
     for c in columns:
         if c not in out:
             out[c] = t[c]

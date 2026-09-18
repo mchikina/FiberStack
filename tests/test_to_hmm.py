@@ -38,6 +38,7 @@ def test_window_matrix_matches_store(store):
         called[p[(p >= 0) & (p < e - s)]] = True
         assert np.array_equal(row == 1, called)
         assert np.array_equal(row == 0, inside & at & ~called)
+        assert d["n_m6a"][i] == len(q["m6a"][i])   # whole read, not just the window
     assert d["positions"][0] == s and d["center"] == (s + e) // 2
     assert d["qname"][0].endswith("/ccs")
 
